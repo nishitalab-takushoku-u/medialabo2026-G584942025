@@ -1,27 +1,40 @@
 p {
-	color: navy;
+	color: #2a2a8f;
 }
 
 p.info {
-	font-size: 10pt;
+	font-size: small;
+	background-color: #dfdfdf;
+	color: #2a2a8f;
 }
 
 h1 {
-	background-color: #7f7fcf;
+	color: white;
+	text-shadow: 1px 1px 6px rgba(0, 0, 128, 0.3), -1px -1px 6px rgba(0, 0, 128, 0.3), 1px -1px 6px rgba(0, 0, 128, 0.3), -1px 1px 6px rgba(0, 0, 128, 0.3);
 }
 
 h2 {
-	border: solid 1px black;
 	margin: 5px;
+	color: #2a2a8f;
+	background: linear-gradient(to right, white, transparent);
+	font-weight: 900;
 }
 
 div#zentai {
-	display: flex;
-	flex-direction: row;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-auto-rows: 200px;
+	column-gap: 10px;
+	row-gap: 10px;
 	width: 1024px;
 }
 
 div#zentai > div {
-	margin-left: 5px;
+	padding: 5px;
 	background-color: #ffefaf;
+	border: 1px solid #aaa;
+}
+
+div#zentai > div img {
+	float: right;
 }
