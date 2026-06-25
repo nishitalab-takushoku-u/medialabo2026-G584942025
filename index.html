@@ -16,8 +16,8 @@
     <p>プロジェクト課題で作成したページ:<a href="project.html"title="同じフォルダの別ファイルへのリンク"target="_blank">project.html</a>
 
     <h2>数当てゲーム</h2>
-    <p>（このテーマの第3回から数当てゲームを作りますので、そのあとにゲームの概要を説明してください、）（200文字以上）</p>
-    <p>数当てゲームのページ: kazuate.html</p>
+    <p>数当てゲームは、コンピュータがランダムに決めた1から10の整数を3回以内に当てるゲームである。プレイヤーがテキストボックスに数値を入力して「回答」ボタンを押すと、JavaScriptが正誤を判定し、「もっと大きい」「もっと小さい」「正解」などのメッセージをDOMを操作してページ上に表示する。乱数の生成には <code>Math.random()</code> を用い、ボタンのクリックイベントには <code>addEventListener</code> でハンドラを登録した。3回すべて外れるとゲームオーバーとなり正解が表示される。</p>
+    <p>数当てゲームのページ: <a href="kazuate.html" title="数当てゲーム" target="_blank">kazuate.html</a></p>
 
     <h2>各授業回の学習事項</h2>
 
@@ -40,6 +40,10 @@
       target="_blank">演習3-6: オブジェクトのメンバーを出力する</a></p>
 
     <h3>第4回 DOM と JavaScript</h3>
+    <p>第4回では、DOM（Document Object Model）を通じて JavaScript からHTMLを動的に操作する方法を学習した。ブラウザはHTML文書をツリー構造のDOMとして保持しており、<code>document.querySelector()</code> でセレクタに一致する要素を取得できる。取得した要素の <code>textContent</code> や <code>innerHTML</code> プロパティを書き換えることでページの内容を動的に変更できる。また、<code>document.createElement()</code> と <code>appendChild()</code> を組み合わせることで新しい要素をページに追加でき、<code>element.style</code> プロパティを利用すればCSSのスタイルもJavaScriptから直接変更できる。これらの操作により、ユーザの操作に応じてページを再読み込みせず動的に更新するインタラクティブなWebページを作成できる。</p>
+    <p>演習の成果: <a href="practice-eventdom/tashizan.html"
+      title="1つ中のフォルダの別ファイルへのリンク"
+      target="_blank">演習4-10: 足し算ページ</a></p>
 
     <h3>第5回 イベント処理</h3>
   </body>
