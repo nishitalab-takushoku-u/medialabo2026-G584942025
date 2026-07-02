@@ -15,9 +15,11 @@ h1 {
 
 h2 {
 	margin: 5px;
-	color: #2a2a8f;
+	color: #403fa9;
 	background: linear-gradient(to right, white, transparent);
 	font-weight: 900;
+	-webkit-text-stroke: 1.5px currentColor;
+	font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN", sans-serif;
 }
 
 div#zentai {
@@ -32,7 +34,6 @@ div#zentai {
 div#zentai > div {
 	padding: 5px;
 	background-color: #ffefaf;
-	border: 1px solid #aaa;
 }
 
 div#zentai > div img {
