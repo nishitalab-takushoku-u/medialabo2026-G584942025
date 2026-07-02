@@ -14,7 +14,40 @@ function print(data) {
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+    let result = document.createElement('div');
+    result.id = 'result';
+    document.body.insertAdjacentElement('beforeend', result);
 
+    let heading = document.createElement('h2');
+    heading.textContent = '以下の地域の天候に関する情報を検索して表示します';
+    result.insertAdjacentElement('beforeend', heading);
+
+    let items = [
+        '都市名：' + data.name,
+        '緯度：' + data.coord.lat,
+        '経度：' + data.coord.lon,
+        '天気：' + data.weather[0].description,
+        '最低気温：' + data.main.temp_min,
+        '最高気温：' + data.main.temp_max,
+        '湿度：' + data.main.humidity,
+        '風速：' + data.wind.speed,
+        '風向：' + data.wind.deg
+    ];
+
+    let ul = document.createElement('ul');
+    for (let text of items) {
+        let li = document.createElement('li');
+        li.textContent = text;
+        ul.insertAdjacentElement('beforeend', li);
+    }
+    result.insertAdjacentElement('beforeend', ul);
+
+    let figure = document.createElement('figure');
+    let icon = document.createElement('img');
+    icon.src = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
+    icon.alt = data.weather[0].description;
+    figure.insertAdjacentElement('beforeend', icon);
+    result.insertAdjacentElement('beforeend', figure);
 }
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述

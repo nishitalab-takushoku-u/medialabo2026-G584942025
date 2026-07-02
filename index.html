@@ -46,5 +46,9 @@
       target="_blank">演習4-10: 足し算ページ</a></p>
 
     <h3>第5回 イベント処理</h3>
+    <p>第5回では、ユーザの操作に応じて処理を実行するイベント処理の仕組みと、DOM操作の応用について学習した。要素にイベントハンドラを登録するには <code>addEventListener()</code> を用い、第1引数にイベントの種類（<code>"click"</code> など）、第2引数に実行する関数を指定する。ハンドラの引数として受け取れる <code>event</code> オブジェクトの <code>event.target</code> プロパティを参照すると、実際にイベントが発生した要素を特定できるため、同じ処理を複数の要素にまとめて登録する場合に便利である。また、<code>classList.add()</code> や <code>classList.remove()</code> を使うと要素に付与するクラスを動的に切り替えられ、CSSと組み合わせてクリックした要素の見た目を変化させることができる。DOM操作については、<code>insertAdjacentElement()</code> で既存の要素の前後や内部に新しい要素を挿入する方法、<code>setAttribute()</code> で要素の属性（画像の <code>src</code> やリンクの <code>href</code> など）を書き換える方法、<code>remove()</code> で要素をページから削除する方法をあわせて学んだ。</p>
+    <p>演習の成果: <a href="practice-dom2/dom2-exercise.html"
+      title="1つ中のフォルダの別ファイルへのリンク"
+      target="_blank">演習5-7: DOM の演習その2</a></p>
   </body>
 </html>
