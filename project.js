@@ -1,30 +1,59 @@
-const weatherData = {
-  1816670: { lat: 39.91,  lon: 116.39,  desc: '曇りがち', tempMin:  9.9, tempMax:  9.9, humidity: 14, speed: 2.65,deg: 197, name: '北京市',        icon: '04d' },
-  1850147: { lat: 35.69,  lon: 139.69,  desc: '晴れ',     tempMin: 16.0, tempMax: 21.5, humidity: 52, speed: 3.8, deg: 270, name: 'Tokyo',         icon: '01d' },
-  2147714: { lat: -33.87, lon: 151.21,  desc: '快晴',     tempMin: 18.2, tempMax: 24.0, humidity: 60, speed: 4.2, deg: 150, name: 'Sydney',        icon: '01d' },
-  2643743: { lat: 51.51,  lon:  -0.13,  desc: '薄曇り',   tempMin:  9.0, tempMax: 13.4, humidity: 80, speed: 5.1, deg:  45, name: 'London',        icon: '03d' },
-  5128581: { lat: 40.71,  lon: -74.01,  desc: '晴れ',     tempMin: 14.3, tempMax: 20.0, humidity: 50, speed: 4.6, deg: 300, name: 'New York',      icon: '01d' },
-};
+document.querySelector('#search-btn').addEventListener('click', sendRequest);
 
-document.querySelector('#search-btn').addEventListener('click', function () {
-  const id = Number(document.querySelector('#city-select').value);
-  const d = weatherData[id];
+// 通信を開始する処理
+function sendRequest() {
+  const id = document.querySelector('#city-select').value;
+  const url = `https://www.nishita-lab.org/web-contents/jsons/openweather/${id}.json`;
 
-  document.querySelector('#result-list').innerHTML = `
-    <li>緯度: ${d.lat}</li>
-    <li>経度: ${d.lon}</li>
-    <li>天気: ${d.desc}</li>
-    <li>最低気温: ${d.tempMin}</li>
-    <li>最高気温: ${d.tempMax}</li>
-    <li>湿度: ${d.humidity}</li>
-    <li>風速: ${d.speed}</li>
-    <li>風向: ${d.deg}</li>
-    <li>都市名: ${d.name}</li>
+  axios.get(url)
+    .then(showResult)  // 通信成功
+    .catch(showError)  // 通信失敗
+    .then(finish);     // 通信の最後の処理
+}
+
+// 通信が成功した時
+function showResult(resp) {
+  let data = resp.data;
+
+  if (typeof data === 'string') {
+    data = JSON.parse(data);
+  }
+
+  printDom(data);
+}
+
+// 通信エラーが発生した時
+function showError(err) {
+  console.log(err);
+}
+
+// 通信の最後に実行する
+function finish() {
+  console.log('Ajax 通信が終わりました');
+}
+
+// 検索結果をページに表示する
+function printDom(data) {
+  const list = document.querySelector('#result-list');
+  list.innerHTML = ''; // 前回の検索結果削除
+
+  const weather = data.weather[0];
+
+  list.innerHTML = `
+    <li>都市名: ${data.name}</li>
+    <li>緯度: ${data.coord.lat}</li>
+    <li>経度: ${data.coord.lon}</li>
+    <li>天気: ${weather.description}</li>
+    <li>最低気温: ${data.main.temp_min}℃</li>
+    <li>最高気温: ${data.main.temp_max}℃</li>
+    <li>湿度: ${data.main.humidity}%</li>
+    <li>風速: ${data.wind.speed}m/s</li>
+    <li>風向: ${data.wind.deg}°</li>
   `;
 
   const icon = document.querySelector('#weather-icon');
-  icon.src = `https://openweathermap.org/img/wn/${d.icon}@2x.png`;
-  icon.alt = d.desc;
+  icon.src = `https://openweathermap.org/img/wn/${weather.icon}@2x.png`;
+  icon.alt = weather.description;
 
   document.querySelector('#result-section').removeAttribute('hidden');
-});
+}
