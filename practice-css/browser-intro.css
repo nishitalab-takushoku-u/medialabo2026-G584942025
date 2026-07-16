@@ -1,11 +1,11 @@
 p {
-	color: #2a2a8f;
+	color: #3f3faf;
 }
 
 p.info {
 	font-size: small;
 	background-color: #dfdfdf;
-	color: #2a2a8f;
+	color: #3f3faf;
 }
 
 h1 {
@@ -15,11 +15,9 @@ h1 {
 
 h2 {
 	margin: 5px;
-	color: #403fa9;
+	color: #3f3faf;
 	background: linear-gradient(to right, white, transparent);
-	font-weight: 900;
-	-webkit-text-stroke: 1.5px currentColor;
-	font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN", sans-serif;
+	font-family:cursive;
 }
 
 div#zentai {
